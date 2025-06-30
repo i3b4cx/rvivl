@@ -1,5 +1,10 @@
-test_exe = executable('rvivl_tests',
-  'test_main.cpp',
-  dependencies: [rvivl_dep])
+gtest_proj = subproject('gtest')
+gtest_dep = gtest_proj.get_variable('gtest_dep')
+gmock_dep = gtest_proj.get_variable('gmock_dep')
 
-test('rvivl unit tests', test_exe)
+tests_src = [
+    'simple_test.cpp',
+]
+
+exe = executable('gtest-all', tests_src, dependencies : [ gtest_dep, gmock_dep])
+test('gtest tests', exe)
