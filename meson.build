@@ -7,5 +7,8 @@ vulkan_dep = declare_dependency(
     dependencies: [vulkan_headers_dep, vulkan_loader_dep],
 )
 
+sdl2_proj = subproject('sdl2')
+sdl2_dep = sdl2_proj.get_variable('sdl2_dep')
+
 subdir('src')
 subdir('tests')
